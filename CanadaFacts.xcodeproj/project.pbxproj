@@ -596,7 +596,7 @@
 				INFOPLIST_FILE = PacteraTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = CanadaFactsTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PacteraTest.app/PacteraTest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CanadaFacts.app/CanadaFacts";
 			};
 			name = Debug;
 		};
@@ -611,7 +611,7 @@
 				INFOPLIST_FILE = PacteraTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = CanadaFactsTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PacteraTest.app/PacteraTest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CanadaFacts.app/CanadaFacts";
 			};
 			name = Release;
 		};
