@@ -11,9 +11,9 @@
 ////////////////////////////////////////////////////////////////
 NSString* safe (NSObject* value) {
     if ([value isKindOfClass:[NSString class]]) {
-        return value != nil && ((NSString*)value).length ? value : @"";
+        return value != nil && ((NSString*)value).length ? (NSString*)value : @"";
     } else {
-        return (value == nil || value == [NSNull null]) ? @"" : value;
+        return (value == nil || value == [NSNull null]) ? @"" : (NSString*)value;
     }
 }
 
@@ -30,11 +30,18 @@ NSArray* safeArray (NSArray* value) {
     }
 }
 
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 @implementation PCCommonUtils
 
+////////////////////////////////////////////////////////////////
 + (UIFont*) getTitleFont { return [UIFont systemFontOfSize:22]; }
+////////////////////////////////////////////////////////////////
 + (UIFont*) getHeaderFont { return [UIFont systemFontOfSize:18]; }
+////////////////////////////////////////////////////////////////
 + (UIFont*) getStandardFont { return [UIFont systemFontOfSize:14]; }
+////////////////////////////////////////////////////////////////
 + (UIFont*) getDescriptionFont { return [UIFont systemFontOfSize:10]; }
 
 
