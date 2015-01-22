@@ -7,94 +7,196 @@
 //
 
 #import "PCMainViewController.h"
+#import "PCCountryFactCell.h"
+#import "PCDataDownloader.h"
 
+static NSString *CellIdCountryFact = @"CellIdCountryFact";
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 @interface PCMainViewController ()
+
+// A dictionary of offscreen cells that are used within the tableView:heightForRowAtIndexPath: method to
+// handle the height calculations. These are never drawn onscreen. The dictionary is in the format:
+//      { NSString *reuseIdentifier : UITableViewCell *offscreenCell, ... }
+@property (strong, nonatomic) NSMutableDictionary *offscreenCells;
+
+@property (nonatomic, strong) NSArray *factArray;
 
 @end
 
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 @implementation PCMainViewController
 
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+#pragma mark - LifeCycle
+
+///////////////////////////////////////////////////////////////
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.offscreenCells = [NSMutableDictionary dictionary];
+        self.factArray = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return self;
+}
+
+///////////////////////////////////////////////////////////////
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBarHidden = NO;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.allowsSelection = NO;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.tableView registerClass:[PCCountryFactCell class] forCellReuseIdentifier:CellIdCountryFact];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    //Allow Pull to Refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadCountryData) forControlEvents:UIControlEventValueChanged];
     
-    // Configure the cell...
+    // Setting the estimated row height prevents the table view from calling tableView:heightForRowAtIndexPath: for
+    // every row in the table on first load; it will only be called as cells are about to scroll onscreen.
+    // This is a major performance optimization.
+    self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self loadCountryData];
+}
+
+
+///////////////////////////////////////////////////////////////
+- (void) updateViewConstraints {
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    [super updateViewConstraints];
+}
+
+///////////////////////////////////////////////////////////////
+- (void)viewWillLayoutSubviews
+{
+    // When this view controller is presented through a UINavigationController, the updateViewContraints will not be
+    // called automatically. The following is required to make them called.
+    [super viewWillLayoutSubviews];
+    [self.view setNeedsUpdateConstraints];
+}
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+#pragma mark - Action Handlers
+
+-(void) loadCountryData {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [PCDataDownloader loadCountryDatFromServer:^(NSDictionary *countryData) {
+            if(countryData == nil) {
+                [self.refreshControl endRefreshing];
+                return;
+            }
+            
+            NSString *listTitle = [countryData objectForKey:@"title"];
+            if(listTitle) {
+                [self.navigationItem setTitle:listTitle];
+            }
+            NSArray *rows = [countryData objectForKey:@"rows"];
+            if(rows) {
+                self.factArray = rows;
+                [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+            }
+        } failure:^(NSError *error) {
+            [self.refreshControl endRefreshing];
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"refreshFailTitle", nil)
+                                        message:NSLocalizedString(@"refreshFailMessage", nil)
+                                       delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil] show];
+        }];
+    });
+    
+}
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+#pragma mark - UITableViewDataSource methods
+
+
+///////////////////////////////////////////////////////////////
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PCCountryFactCell *cell = [self.offscreenCells objectForKey:CellIdCountryFact];
+    if(cell == nil) {
+        cell = [[PCCountryFactCell alloc] init];
+        [self.offscreenCells setObject:cell forKey:CellIdCountryFact];
+    }
+    NSDictionary *factDict = [self.factArray objectAtIndex:indexPath.row];
+    [cell setFactWithDictionary:(NSDictionary*)factDict];
+    
+    // Make sure the constraints have been added to this cell, since it may have just been created from scratch
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    
+    // The cell's width must be set to the same size it will end up at once it is in the table view.
+    // This is important so that we'll get the correct height for different table view widths, since our cell's
+    // height depends on its width due to the multi-line UILabel word wrapping. Don't need to do this above in
+    // -[tableView:cellForRowAtIndexPath:] because it happens automatically when the cell is used in the table view.
+    cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
+    // NOTE: if you are displaying a section index (e.g. alphabet along the right side of the table view), or
+    // if you are using a grouped table view style where cells have insets to the edges of the table view,
+    // you'll need to adjust the cell.bounds.size.width to be smaller than the full width of the table view we just
+    // set it to above. See http://stackoverflow.com/questions/3647242 for discussion on the section index width.
+    
+    // Do the layout pass on the cell, which will calculate the frames for all the views based on the constraints
+    // (Note that the preferredMaxLayoutWidth is set on multi-line UILabels inside the -[layoutSubviews] method
+    // in the UITableViewCell subclass
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
+    
+    // Get the actual height required for the cell
+    CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    
+    // Add an extra point to the height to account for the cell separator, which is added between the bottom
+    // of the cell's contentView and the bottom of the table view cell.
+    height += 1;
+    
+    if([cell.fact isEmpty]) {
+        return 0.0;
+    }
+    return height;
+}
+
+
+///////////////////////////////////////////////////////////////
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return self.factArray.count;
+}
+
+
+///////////////////////////////////////////////////////////////
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PCCountryFactCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdCountryFact];
+    [cell setFactWithDictionary:[self.factArray objectAtIndex:indexPath.row]];
+    
+    //Need this to make sure that cell is sized correctly for the content
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+///////////////////////////////////////////////////////////////
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(self.factArray.count > 0) {
+        PCCountryFactCell *cell = (PCCountryFactCell*)[self.tableView.visibleCells objectAtIndex:0];
+        [self.navigationItem setTitle:[NSString stringWithFormat:@"Canada %@", cell.fact.factTitle]];
+    }
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
