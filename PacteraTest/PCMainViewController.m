@@ -9,6 +9,7 @@
 #import "PCMainViewController.h"
 #import "PCCountryFactCell.h"
 #import "PCDataDownloader.h"
+#import "PureLayout.h"
 
 static NSString *CellIdCountryFact = @"CellIdCountryFact";
 
@@ -55,8 +56,7 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView registerClass:[PCCountryFactCell class] forCellReuseIdentifier:CellIdCountryFact];
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    
+
     //Allow Pull to Refresh
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadCountryData) forControlEvents:UIControlEventValueChanged];
@@ -75,6 +75,7 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
 ///////////////////////////////////////////////////////////////
 - (void) updateViewConstraints {
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     [super updateViewConstraints];
 }
 

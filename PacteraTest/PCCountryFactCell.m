@@ -69,17 +69,16 @@
         
         [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:marginVertical];
         [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
-        [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal];
+        
+        [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
         
         [self.factImageView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical];
-        [self.factImageView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
-        [self.factImageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal];
-        NSLog(@"%@", self.fact.factImageUrl);
+        [self.factImageView autoAlignAxisToSuperviewAxis:ALAxisVertical];
         [self.factImageView autoSetDimension:ALDimensionHeight toSize:100.];
         
         [self.factLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factImageView withOffset:marginVertical];
         [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
-        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal];
+        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
         [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical];
         
         self.didSetupConstraints = YES;

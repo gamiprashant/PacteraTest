@@ -26,13 +26,15 @@
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
       "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "AppIcon.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "iphone",
       "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "AppIcon57@2x.png",
       "scale" : "2x"
     },
     {
