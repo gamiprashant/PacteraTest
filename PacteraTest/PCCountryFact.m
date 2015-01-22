@@ -26,4 +26,10 @@
     return self;
 }
 
+///////////////////////////////////////////////////////////////
+-(BOOL) isEmpty {
+    return ( [self.factTitle isEqualToString:@""] &&
+             [self.factDescription isEqualToString:@""] &&
+            [self.factImageUrl isEqualToString:@""]);
+}
 @end

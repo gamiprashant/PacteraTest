@@ -15,5 +15,5 @@
 @property (nonatomic, strong) NSString *factImageUrl;
 
 -(instancetype) initWithDictionary:(NSDictionary*)factDict;
-
+-(BOOL) isEmpty;
 @end
