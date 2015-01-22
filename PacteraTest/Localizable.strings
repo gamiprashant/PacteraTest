@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  PacteraTest
+
+  Created by Prashant Gami on 22/01/2015.
+  Copyright (c) 2015 Pectera. All rights reserved.
+*/
+
+"factTitleKey"="title";
+"factDescriptionKey"="description";
+"factImageUrlKey"="imageHref";
+
+"refreshFailTitle"="Refresh Failed";
+"refreshFailMessage"="Data Refresh failed due to network issues.\nPlease try again later.";
+
+"appName"="Canada App";
+"copyrightText"="CopyRight ©ARY 2015, all Rights Reserved.";
