@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		CA0C11751A70E05A0010440D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C11741A70E05A0010440D /* main.m */; };
-		CA0C11781A70E05A0010440D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C11771A70E05A0010440D /* AppDelegate.m */; };
-		CA0C117B1A70E05A0010440D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C117A1A70E05A0010440D /* ViewController.m */; };
-		CA0C117E1A70E05A0010440D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0C117C1A70E05A0010440D /* Main.storyboard */; };
-		CA0C11801A70E05A0010440D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0C117F1A70E05A0010440D /* Images.xcassets */; };
-		CA0C11831A70E05A0010440D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0C11811A70E05A0010440D /* LaunchScreen.xib */; };
+		CA0C11781A70E05A0010440D /* PCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C11771A70E05A0010440D /* PCAppDelegate.m */; };
 		CA0C118F1A70E05A0010440D /* PacteraTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C118E1A70E05A0010440D /* PacteraTestTests.m */; };
+		CA0C119A1A70E0E70010440D /* PCWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C11991A70E0E70010440D /* PCWelcomeViewController.m */; };
+		CA0C119C1A70E1960010440D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA0C119B1A70E1960010440D /* Default-568h@2x.png */; };
+		CA0C11A11A70E22E0010440D /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0C11A01A70E22E0010440D /* images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,16 +29,15 @@
 		CA0C116F1A70E05A0010440D /* PacteraTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacteraTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0C11731A70E05A0010440D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0C11741A70E05A0010440D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CA0C11761A70E05A0010440D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CA0C11771A70E05A0010440D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CA0C11791A70E05A0010440D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CA0C117A1A70E05A0010440D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CA0C117D1A70E05A0010440D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CA0C117F1A70E05A0010440D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CA0C11821A70E05A0010440D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		CA0C11761A70E05A0010440D /* PCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCAppDelegate.h; sourceTree = "<group>"; };
+		CA0C11771A70E05A0010440D /* PCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCAppDelegate.m; sourceTree = "<group>"; };
 		CA0C11881A70E05A0010440D /* PacteraTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PacteraTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0C118D1A70E05A0010440D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0C118E1A70E05A0010440D /* PacteraTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PacteraTestTests.m; sourceTree = "<group>"; };
+		CA0C11981A70E0E70010440D /* PCWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCWelcomeViewController.h; sourceTree = "<group>"; };
+		CA0C11991A70E0E70010440D /* PCWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCWelcomeViewController.m; sourceTree = "<group>"; };
+		CA0C119B1A70E1960010440D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		CA0C11A01A70E22E0010440D /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +79,9 @@
 		CA0C11711A70E05A0010440D /* PacteraTest */ = {
 			isa = PBXGroup;
 			children = (
-				CA0C11761A70E05A0010440D /* AppDelegate.h */,
-				CA0C11771A70E05A0010440D /* AppDelegate.m */,
-				CA0C11791A70E05A0010440D /* ViewController.h */,
-				CA0C117A1A70E05A0010440D /* ViewController.m */,
-				CA0C117C1A70E05A0010440D /* Main.storyboard */,
-				CA0C117F1A70E05A0010440D /* Images.xcassets */,
-				CA0C11811A70E05A0010440D /* LaunchScreen.xib */,
+				CA0C119D1A70E1C60010440D /* controllers */,
+				CA0C11761A70E05A0010440D /* PCAppDelegate.h */,
+				CA0C11771A70E05A0010440D /* PCAppDelegate.m */,
 				CA0C11721A70E05A0010440D /* Supporting Files */,
 			);
 			path = PacteraTest;
@@ -96,8 +90,10 @@
 		CA0C11721A70E05A0010440D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CA0C119B1A70E1960010440D /* Default-568h@2x.png */,
 				CA0C11731A70E05A0010440D /* Info.plist */,
 				CA0C11741A70E05A0010440D /* main.m */,
+				CA0C11A01A70E22E0010440D /* images.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -117,6 +113,15 @@
 				CA0C118D1A70E05A0010440D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CA0C119D1A70E1C60010440D /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CA0C11981A70E0E70010440D /* PCWelcomeViewController.h */,
+				CA0C11991A70E0E70010440D /* PCWelcomeViewController.m */,
+			);
+			name = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +168,7 @@
 		CA0C11671A70E05A0010440D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = PC;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Pectera;
 				TargetAttributes = {
@@ -199,9 +205,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA0C117E1A70E05A0010440D /* Main.storyboard in Resources */,
-				CA0C11831A70E05A0010440D /* LaunchScreen.xib in Resources */,
-				CA0C11801A70E05A0010440D /* Images.xcassets in Resources */,
+				CA0C119C1A70E1960010440D /* Default-568h@2x.png in Resources */,
+				CA0C11A11A70E22E0010440D /* images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA0C117B1A70E05A0010440D /* ViewController.m in Sources */,
-				CA0C11781A70E05A0010440D /* AppDelegate.m in Sources */,
+				CA0C11781A70E05A0010440D /* PCAppDelegate.m in Sources */,
 				CA0C11751A70E05A0010440D /* main.m in Sources */,
+				CA0C119A1A70E0E70010440D /* PCWelcomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,25 +247,6 @@
 			targetProxy = CA0C11891A70E05A0010440D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		CA0C117C1A70E05A0010440D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CA0C117D1A70E05A0010440D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CA0C11811A70E05A0010440D /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CA0C11821A70E05A0010440D /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CA0C11901A70E05A0010440D /* Debug */ = {

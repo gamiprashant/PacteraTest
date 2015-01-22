@@ -6,17 +6,17 @@
 //  Copyright (c) 2015 Pectera. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "PCAppDelegate.h"
+#import "PCWelcomeViewController.h"
 
-@interface AppDelegate ()
-
-@end
-
-@implementation AppDelegate
+@implementation PCAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    UIViewController *vc = [[PCWelcomeViewController alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:vc]];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

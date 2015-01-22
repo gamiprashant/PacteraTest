@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  PCWelcomeViewController.h
 //  PacteraTest
 //
 //  Created by Prashant Gami on 22/01/2015.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface PCWelcomeViewController : UIViewController
 
 @end
-
