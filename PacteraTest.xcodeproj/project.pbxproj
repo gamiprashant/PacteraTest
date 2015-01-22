@@ -33,6 +33,8 @@
 		CA0C12DD1A70E7E50010440D /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12D51A70E7E50010440D /* ALView+PureLayout.m */; };
 		CA0C12DE1A70E7E50010440D /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12D71A70E7E50010440D /* NSArray+PureLayout.m */; };
 		CA0C12DF1A70E7E50010440D /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12D91A70E7E50010440D /* NSLayoutConstraint+PureLayout.m */; };
+		CA0C12E61A70EA300010440D /* PCCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12E51A70EA300010440D /* PCCommonUtils.m */; };
+		CA0C12EB1A70EE3C0010440D /* PCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12EA1A70EE3C0010440D /* PCMainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,12 @@
 		CA0C12DA1A70E7E50010440D /* PureLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PureLayout+Internal.h"; sourceTree = "<group>"; };
 		CA0C12DB1A70E7E50010440D /* PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayout.h; sourceTree = "<group>"; };
 		CA0C12DC1A70E7E50010440D /* PureLayoutDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutDefines.h; sourceTree = "<group>"; };
+		CA0C12E41A70EA300010440D /* PCCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCommonUtils.h; sourceTree = "<group>"; };
+		CA0C12E51A70EA300010440D /* PCCommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCommonUtils.m; sourceTree = "<group>"; };
+		CA0C12E71A70EA8D0010440D /* PCConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCConstants.h; sourceTree = "<group>"; };
+		CA0C12E81A70EB540010440D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		CA0C12E91A70EE3C0010440D /* PCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCMainViewController.h; sourceTree = "<group>"; };
+		CA0C12EA1A70EE3C0010440D /* PCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCMainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +153,10 @@
 		CA0C11711A70E05A0010440D /* PacteraTest */ = {
 			isa = PBXGroup;
 			children = (
+				CA0C12E31A70E9F00010440D /* cells */,
+				CA0C12E21A70E9E90010440D /* model */,
+				CA0C12E11A70E9E10010440D /* http */,
+				CA0C12E01A70E9D80010440D /* utilities */,
 				CA0C119D1A70E1C60010440D /* controllers */,
 				CA0C11761A70E05A0010440D /* PCAppDelegate.h */,
 				CA0C11771A70E05A0010440D /* PCAppDelegate.m */,
@@ -160,6 +172,7 @@
 				CA0C11731A70E05A0010440D /* Info.plist */,
 				CA0C11741A70E05A0010440D /* main.m */,
 				CA0C11A01A70E22E0010440D /* images.xcassets */,
+				CA0C12E81A70EB540010440D /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -186,6 +199,8 @@
 			children = (
 				CA0C11981A70E0E70010440D /* PCWelcomeViewController.h */,
 				CA0C11991A70E0E70010440D /* PCWelcomeViewController.m */,
+				CA0C12E91A70EE3C0010440D /* PCMainViewController.h */,
+				CA0C12EA1A70EE3C0010440D /* PCMainViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -264,6 +279,37 @@
 				CA0C12DC1A70E7E50010440D /* PureLayoutDefines.h */,
 			);
 			path = PureLayout;
+			sourceTree = "<group>";
+		};
+		CA0C12E01A70E9D80010440D /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CA0C12E41A70EA300010440D /* PCCommonUtils.h */,
+				CA0C12E51A70EA300010440D /* PCCommonUtils.m */,
+				CA0C12E71A70EA8D0010440D /* PCConstants.h */,
+			);
+			name = utilities;
+			sourceTree = "<group>";
+		};
+		CA0C12E11A70E9E10010440D /* http */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = http;
+			sourceTree = "<group>";
+		};
+		CA0C12E21A70E9E90010440D /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		CA0C12E31A70E9F00010440D /* cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +416,7 @@
 				CA0C12CF1A70E7D40010440D /* UIImageView+AFNetworking.m in Sources */,
 				CA0C11781A70E05A0010440D /* PCAppDelegate.m in Sources */,
 				CA0C12B11A70E7BC0010440D /* AFHTTPRequestOperationManager.m in Sources */,
+				CA0C12EB1A70EE3C0010440D /* PCMainViewController.m in Sources */,
 				CA0C12D01A70E7D40010440D /* UIProgressView+AFNetworking.m in Sources */,
 				CA0C12B31A70E7BC0010440D /* AFNetworkReachabilityManager.m in Sources */,
 				CA0C12DE1A70E7E50010440D /* NSArray+PureLayout.m in Sources */,
@@ -381,6 +428,7 @@
 				CA0C12B41A70E7BC0010440D /* AFSecurityPolicy.m in Sources */,
 				CA0C12D11A70E7D40010440D /* UIRefreshControl+AFNetworking.m in Sources */,
 				CA0C12D21A70E7D40010440D /* UIWebView+AFNetworking.m in Sources */,
+				CA0C12E61A70EA300010440D /* PCCommonUtils.m in Sources */,
 				CA0C12B21A70E7BC0010440D /* AFHTTPSessionManager.m in Sources */,
 				CA0C12CD1A70E7D40010440D /* UIAlertView+AFNetworking.m in Sources */,
 				CA0C12B61A70E7BC0010440D /* AFURLRequestSerialization.m in Sources */,
@@ -434,6 +482,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PacteraTest/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -474,6 +524,8 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PacteraTest/PrefixHeader.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

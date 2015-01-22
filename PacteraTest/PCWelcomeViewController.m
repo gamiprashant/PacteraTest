@@ -7,34 +7,76 @@
 //
 
 #import "PCWelcomeViewController.h"
+#import "PureLayout.h"
+#import "PCCommonUtils.h"
+#import "PCConstants.h"
+#import "PCMainViewController.h"
 
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 @interface PCWelcomeViewController ()
+
+@property (nonatomic, strong) UILabel *mainLabel;
+@property (nonatomic, strong) UILabel *copyrightLabel;
 
 @end
 
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 @implementation PCWelcomeViewController
 
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+#pragma mark - LifeCycle
+
+///////////////////////////////////////////////////////////////
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view = [[UIView alloc] init];
-    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = YES;
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.mainLabel = [UILabel newAutoLayoutView];
+    self.mainLabel.font = [PCCommonUtils getTitleFont];
+    self.mainLabel.text = NSLocalizedString(@"appName", nil);
+    [self.view addSubview:self.mainLabel];
+    
+    self.copyrightLabel = [UILabel newAutoLayoutView];
+    self.copyrightLabel.font = [PCCommonUtils getDescriptionFont];
+    self.copyrightLabel.text = NSLocalizedString(@"copyrightText", nil);
+    [self.view addSubview:self.copyrightLabel];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+///////////////////////////////////////////////////////////////
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3. * NSEC_PER_SEC),
+                   dispatch_get_main_queue(), ^{
+                       PCMainViewController *vc = [[PCMainViewController alloc] init];
+                       self.navigationController.viewControllers = @[vc];
+                   });
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+///////////////////////////////////////////////////////////////
+- (void) updateViewConstraints {
+    
+    [self.mainLabel autoCenterInSuperview];
+    
+    [self.copyrightLabel autoAlignAxisToSuperviewAxis:ALAxisVertical];
+    [self.copyrightLabel autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view
+                          withOffset:-20];
+    [super updateViewConstraints];
 }
-*/
+
+///////////////////////////////////////////////////////////////
+- (void)viewWillLayoutSubviews
+{
+    // When this view controller is presented through a UINavigationController,
+    // the updateViewContraints will not be
+    // called automatically. The following is required to make them called.
+    [super viewWillLayoutSubviews];
+    [self.view setNeedsUpdateConstraints];
+}
 
 @end
