@@ -37,6 +37,8 @@
 		CA0C12EB1A70EE3C0010440D /* PCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12EA1A70EE3C0010440D /* PCMainViewController.m */; };
 		CA0C12EE1A7108680010440D /* PCCountryFact.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12ED1A7108680010440D /* PCCountryFact.m */; };
 		CA0C12F11A71092A0010440D /* PCDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12F01A71092A0010440D /* PCDataDownloader.m */; };
+		CA0C12F41A71111E0010440D /* PCCountryFactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12F31A71111E0010440D /* PCCountryFactCell.m */; };
+		CA0C12F61A71131C0010440D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA0C12F51A71131C0010440D /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,9 @@
 		CA0C12ED1A7108680010440D /* PCCountryFact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCountryFact.m; sourceTree = "<group>"; };
 		CA0C12EF1A71092A0010440D /* PCDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCDataDownloader.h; sourceTree = "<group>"; };
 		CA0C12F01A71092A0010440D /* PCDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCDataDownloader.m; sourceTree = "<group>"; };
+		CA0C12F21A71111E0010440D /* PCCountryFactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCountryFactCell.h; sourceTree = "<group>"; };
+		CA0C12F31A71111E0010440D /* PCCountryFactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCountryFactCell.m; sourceTree = "<group>"; };
+		CA0C12F51A71131C0010440D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +184,7 @@
 				CA0C11741A70E05A0010440D /* main.m */,
 				CA0C11A01A70E22E0010440D /* images.xcassets */,
 				CA0C12E81A70EB540010440D /* PrefixHeader.pch */,
+				CA0C12F51A71131C0010440D /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -318,6 +324,8 @@
 		CA0C12E31A70E9F00010440D /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				CA0C12F21A71111E0010440D /* PCCountryFactCell.h */,
+				CA0C12F31A71111E0010440D /* PCCountryFactCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -404,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA0C119C1A70E1960010440D /* Default-568h@2x.png in Resources */,
+				CA0C12F61A71131C0010440D /* Localizable.strings in Resources */,
 				CA0C11A11A70E22E0010440D /* images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +454,7 @@
 				CA0C12F11A71092A0010440D /* PCDataDownloader.m in Sources */,
 				CA0C12B61A70E7BC0010440D /* AFURLRequestSerialization.m in Sources */,
 				CA0C12DF1A70E7E50010440D /* NSLayoutConstraint+PureLayout.m in Sources */,
+				CA0C12F41A71111E0010440D /* PCCountryFactCell.m in Sources */,
 				CA0C12CB1A70E7D40010440D /* AFNetworkActivityIndicatorManager.m in Sources */,
 				CA0C12B81A70E7BC0010440D /* AFURLSessionManager.m in Sources */,
 				CA0C11751A70E05A0010440D /* main.m in Sources */,
