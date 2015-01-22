@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>92440655-A561-4571-BCB4-7573D4D64080</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Canada Facts</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F2A1577E06261DF116BEA175C65A19EA5A315A04</key>
+		<string>github.com:gamiprashant/PacteraTest.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Canada Facts.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F2A1577E06261DF116BEA175C65A19EA5A315A04</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:gamiprashant/PacteraTest.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F2A1577E06261DF116BEA175C65A19EA5A315A04</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F2A1577E06261DF116BEA175C65A19EA5A315A04</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PacteraTest</string>
+		</dict>
+	</array>
+</dict>
+</plist>

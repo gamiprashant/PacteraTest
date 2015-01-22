@@ -52,12 +52,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CA0C116F1A70E05A0010440D /* PacteraTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacteraTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0C116F1A70E05A0010440D /* CanadaFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CanadaFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0C11731A70E05A0010440D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0C11741A70E05A0010440D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CA0C11761A70E05A0010440D /* PCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCAppDelegate.h; sourceTree = "<group>"; };
 		CA0C11771A70E05A0010440D /* PCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCAppDelegate.m; sourceTree = "<group>"; };
-		CA0C11881A70E05A0010440D /* PacteraTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PacteraTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0C11881A70E05A0010440D /* CanadaFactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanadaFactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0C118D1A70E05A0010440D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0C118E1A70E05A0010440D /* PacteraTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PacteraTestTests.m; sourceTree = "<group>"; };
 		CA0C11981A70E0E70010440D /* PCWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCWelcomeViewController.h; sourceTree = "<group>"; };
@@ -155,8 +155,8 @@
 		CA0C11701A70E05A0010440D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CA0C116F1A70E05A0010440D /* PacteraTest.app */,
-				CA0C11881A70E05A0010440D /* PacteraTestTests.xctest */,
+				CA0C116F1A70E05A0010440D /* CanadaFacts.app */,
+				CA0C11881A70E05A0010440D /* CanadaFactsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -333,9 +333,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CA0C116E1A70E05A0010440D /* PacteraTest */ = {
+		CA0C116E1A70E05A0010440D /* CanadaFacts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA0C11921A70E05A0010440D /* Build configuration list for PBXNativeTarget "PacteraTest" */;
+			buildConfigurationList = CA0C11921A70E05A0010440D /* Build configuration list for PBXNativeTarget "CanadaFacts" */;
 			buildPhases = (
 				CA0C116B1A70E05A0010440D /* Sources */,
 				CA0C116C1A70E05A0010440D /* Frameworks */,
@@ -345,14 +345,14 @@
 			);
 			dependencies = (
 			);
-			name = PacteraTest;
+			name = CanadaFacts;
 			productName = PacteraTest;
-			productReference = CA0C116F1A70E05A0010440D /* PacteraTest.app */;
+			productReference = CA0C116F1A70E05A0010440D /* CanadaFacts.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CA0C11871A70E05A0010440D /* PacteraTestTests */ = {
+		CA0C11871A70E05A0010440D /* CanadaFactsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA0C11951A70E05A0010440D /* Build configuration list for PBXNativeTarget "PacteraTestTests" */;
+			buildConfigurationList = CA0C11951A70E05A0010440D /* Build configuration list for PBXNativeTarget "CanadaFactsTests" */;
 			buildPhases = (
 				CA0C11841A70E05A0010440D /* Sources */,
 				CA0C11851A70E05A0010440D /* Frameworks */,
@@ -363,9 +363,9 @@
 			dependencies = (
 				CA0C118A1A70E05A0010440D /* PBXTargetDependency */,
 			);
-			name = PacteraTestTests;
+			name = CanadaFactsTests;
 			productName = PacteraTestTests;
-			productReference = CA0C11881A70E05A0010440D /* PacteraTestTests.xctest */;
+			productReference = CA0C11881A70E05A0010440D /* CanadaFactsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -387,7 +387,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CA0C116A1A70E05A0010440D /* Build configuration list for PBXProject "PacteraTest" */;
+			buildConfigurationList = CA0C116A1A70E05A0010440D /* Build configuration list for PBXProject "CanadaFacts" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -400,8 +400,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CA0C116E1A70E05A0010440D /* PacteraTest */,
-				CA0C11871A70E05A0010440D /* PacteraTestTests */,
+				CA0C116E1A70E05A0010440D /* CanadaFacts */,
+				CA0C11871A70E05A0010440D /* CanadaFactsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -475,7 +475,7 @@
 /* Begin PBXTargetDependency section */
 		CA0C118A1A70E05A0010440D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CA0C116E1A70E05A0010440D /* PacteraTest */;
+			target = CA0C116E1A70E05A0010440D /* CanadaFacts */;
 			targetProxy = CA0C11891A70E05A0010440D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -567,7 +567,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PacteraTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CanadaFacts;
 			};
 			name = Debug;
 		};
@@ -577,7 +577,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PacteraTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CanadaFacts;
 			};
 			name = Release;
 		};
@@ -595,7 +595,7 @@
 				);
 				INFOPLIST_FILE = PacteraTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CanadaFactsTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PacteraTest.app/PacteraTest";
 			};
 			name = Debug;
@@ -610,7 +610,7 @@
 				);
 				INFOPLIST_FILE = PacteraTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CanadaFactsTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PacteraTest.app/PacteraTest";
 			};
 			name = Release;
@@ -618,7 +618,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CA0C116A1A70E05A0010440D /* Build configuration list for PBXProject "PacteraTest" */ = {
+		CA0C116A1A70E05A0010440D /* Build configuration list for PBXProject "CanadaFacts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA0C11901A70E05A0010440D /* Debug */,
@@ -627,7 +627,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA0C11921A70E05A0010440D /* Build configuration list for PBXNativeTarget "PacteraTest" */ = {
+		CA0C11921A70E05A0010440D /* Build configuration list for PBXNativeTarget "CanadaFacts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA0C11931A70E05A0010440D /* Debug */,
@@ -636,7 +636,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA0C11951A70E05A0010440D /* Build configuration list for PBXNativeTarget "PacteraTestTests" */ = {
+		CA0C11951A70E05A0010440D /* Build configuration list for PBXNativeTarget "CanadaFactsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA0C11961A70E05A0010440D /* Debug */,
