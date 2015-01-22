@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "PCDataDownloader.h"
 
 @interface PacteraTestTests : XCTestCase
 
@@ -37,4 +38,11 @@
     }];
 }
 
+-(void)testDataConnectivity {
+    [PCDataDownloader loadCountryDatFromServer:^(NSDictionary *countryData) {
+        XCTAssertNotNil(countryData);
+    } failure:^(NSError *error) {
+        XCTAssertNil(error);
+    }];
+}
 @end
