@@ -39,6 +39,7 @@
         self.factTitle.font = [PCCommonUtils getHeaderFont];
         self.factTitle.textAlignment = NSTextAlignmentLeft;
         self.factTitle.lineBreakMode = NSLineBreakByWordWrapping;
+        self.factTitle.textColor = [[UIColor blueColor] autorelease];
         self.factTitle.numberOfLines = 0;
         self.factTitle.preferredMaxLayoutWidth = 320.;
         [self.contentView addSubview:self.factTitle];
@@ -69,18 +70,19 @@
         
         [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:marginVertical];
         [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
-        
         [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
-        
-        [self.factImageView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical];
-        [self.factImageView autoAlignAxisToSuperviewAxis:ALAxisVertical];
-        [self.factImageView autoSetDimension:ALDimensionHeight toSize:100.];
-        
-        [self.factLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factImageView withOffset:marginVertical];
+
+        if(self.factImageView != nil) {
+            [self.factImageView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical];
+            [self.factImageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal];
+            [self.factImageView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical relation:NSLayoutRelationGreaterThanOrEqual];
+            [self.factImageView autoSetDimensionsToSize:CGSizeMake(100., 100.)];
+            [self.factLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.factImageView withOffset:-marginHorizontal];
+        }
         [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
+        [self.factLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical];
+        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical relation:NSLayoutRelationGreaterThanOrEqual];
         [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
-        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical];
-        
         self.didSetupConstraints = YES;
     }
     [super updateConstraints];
@@ -101,13 +103,29 @@
     self.fact = [[PCCountryFact alloc] initWithDictionary:factDict];
     [self.factTitle setText:self.fact.factTitle];
     [self.factLabel setText:self.fact.factDescription];
-    
-    if(![self.fact.factImageUrl isEqualToString:@""]) {
+    if([self.fact.factImageUrl isEqualToString:@""]) {
+        self.factImageView = nil;
+    } else {
         [self.factImageView setImageWithURL:[NSURL URLWithString:self.fact.factImageUrl]    //This will Lazy Load the Image
                            placeholderImage:[UIImage imageNamed:@"flag"]];
-    } else {
-        [self.factImageView setImage:[UIImage imageNamed:@"flag"]];
     }
+}
+
+-(void)dealloc {
+    [self.factTitle release];
+    self.factTitle = nil;
+    [self.factTitle dealloc];
+    [self.factLabel release];
+    self.factLabel = nil;
+    [self.factLabel dealloc];
+    [self.factImageView release];
+    self.factImageView = nil;
+    [self.factImageView dealloc];
+    [self.fact release];
+    self.fact = nil;
+    [self.fact dealloc];
+    [super dealloc];
+
 }
 
 @end

@@ -22,7 +22,6 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
 // handle the height calculations. These are never drawn onscreen. The dictionary is in the format:
 //      { NSString *reuseIdentifier : UITableViewCell *offscreenCell, ... }
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
-
 @property (nonatomic, strong) NSArray *factArray;
 
 @end
@@ -192,12 +191,13 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
     return cell;
 }
 
-///////////////////////////////////////////////////////////////
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if(self.factArray.count > 0) {
-        PCCountryFactCell *cell = (PCCountryFactCell*)[self.tableView.visibleCells objectAtIndex:0];
-        [self.navigationItem setTitle:[NSString stringWithFormat:@"Canada %@", cell.fact.factTitle]];
-    }
+-(void)dealloc {
+    [self.factArray release];
+    self.factArray = nil;
+    [self.factArray dealloc];
+    [self.offscreenCells release];
+    self.offscreenCells = nil;
+    [self.offscreenCells dealloc];
+    [super dealloc];
 }
-
 @end

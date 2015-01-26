@@ -55,6 +55,7 @@
                    dispatch_get_main_queue(), ^{
                        PCMainViewController *vc = [[PCMainViewController alloc] init];
                        self.navigationController.viewControllers = @[vc];
+                       [vc release];
                    });
 }
 
@@ -77,6 +78,16 @@
     // called automatically. The following is required to make them called.
     [super viewWillLayoutSubviews];
     [self.view setNeedsUpdateConstraints];
+}
+
+-(void) dealloc {
+    [self.mainLabel release];
+    self.mainLabel = nil;
+    [self.copyrightLabel release];
+    self.copyrightLabel = nil;
+    [self.mainLabel dealloc];
+    [self.copyrightLabel dealloc];
+    [super dealloc];
 }
 
 @end

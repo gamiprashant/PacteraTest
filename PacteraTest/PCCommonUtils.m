@@ -36,14 +36,28 @@ NSArray* safeArray (NSArray* value) {
 @implementation PCCommonUtils
 
 ////////////////////////////////////////////////////////////////
-+ (UIFont*) getTitleFont { return [UIFont systemFontOfSize:22]; }
++ (UIFont*) getTitleFont {
+    UIFont *font = [UIFont systemFontOfSize:22];
+    [font autorelease];
+    return font;
+}
 ////////////////////////////////////////////////////////////////
-+ (UIFont*) getHeaderFont { return [UIFont systemFontOfSize:18]; }
++ (UIFont*) getHeaderFont {
+    UIFont *font = [UIFont systemFontOfSize:18];
+    [font autorelease];
+    return font;
+}
 ////////////////////////////////////////////////////////////////
-+ (UIFont*) getStandardFont { return [UIFont systemFontOfSize:14]; }
++ (UIFont*) getStandardFont {
+    UIFont *font = [UIFont systemFontOfSize:14];
+    [font autorelease];
+    return font;
+}
 ////////////////////////////////////////////////////////////////
-+ (UIFont*) getDescriptionFont { return [UIFont systemFontOfSize:10]; }
-
-
++ (UIFont*) getDescriptionFont {
+    UIFont *font = [UIFont systemFontOfSize:10];
+    [font autorelease];
+    return font;
+}
 
 @end

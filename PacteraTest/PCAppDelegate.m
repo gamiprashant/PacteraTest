@@ -15,8 +15,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIViewController *vc = [[PCWelcomeViewController alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:vc]];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self.window setRootViewController:navController];
     [self.window makeKeyAndVisible];
+
+    [vc release];
+    [navController release];
     return YES;
 }
 
@@ -40,6 +44,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void)dealloc {
+    [self.window release];
+    self.window = nil;
+    [self.window dealloc];
+    [super dealloc];
 }
 
 @end
