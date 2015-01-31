@@ -23,6 +23,7 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
 //      { NSString *reuseIdentifier : UITableViewCell *offscreenCell, ... }
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 @property (nonatomic, strong) NSArray *factArray;
+@property (nonatomic, strong) UIBarButtonItem *refreshBt;
 
 @end
 
@@ -60,6 +61,13 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadCountryData) forControlEvents:UIControlEventValueChanged];
     
+    self.refreshBt = [[UIBarButtonItem alloc]
+                               initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                               target:self
+                               action:@selector(loadCountryData)];
+    self.navigationItem.rightBarButtonItem = self.refreshBt;
+
+    
     // Setting the estimated row height prevents the table view from calling tableView:heightForRowAtIndexPath: for
     // every row in the table on first load; it will only be called as cells are about to scroll onscreen.
     // This is a major performance optimization.
@@ -93,7 +101,9 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
 
 -(void) loadCountryData {
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self showLoading];
         [PCDataDownloader loadCountryDatFromServer:^(NSDictionary *countryData) {
+            [self hideLoading];
             if(countryData == nil) {
                 [self.refreshControl endRefreshing];
                 return;
@@ -110,6 +120,7 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
                 [self.refreshControl endRefreshing];
             }
         } failure:^(NSError *error) {
+            [self hideLoading];
             [self.refreshControl endRefreshing];
             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"refreshFailTitle", nil)
                                         message:NSLocalizedString(@"refreshFailMessage", nil)
@@ -191,7 +202,33 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
     return cell;
 }
 
+///////////////////////////////////////////////////////////////
+-(void)showLoading {
+    UIActivityIndicatorView *activityIndicator =
+    [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [activityIndicator startAnimating];
+    [activityIndicator setColor:[UIColor grayColor]];
+    UIBarButtonItem *activityItem =
+    [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    [activityIndicator release];
+    self.navigationItem.rightBarButtonItem = activityItem;
+    [activityItem release];
+}
+
+///////////////////////////////////////////////////////////////
+-(void)hideLoading {
+    if(self.refreshBt == nil) {
+        self.refreshBt = [[UIBarButtonItem alloc]
+                      initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                      target:self
+                      action:@selector(loadCountryData)];
+    }
+    self.navigationItem.rightBarButtonItem = self.refreshBt;
+}
 -(void)dealloc {
+    [self.refreshBt release];
+    self.refreshBt = nil;
+    [self.refreshBt dealloc];
     [self.factArray release];
     self.factArray = nil;
     [self.factArray dealloc];

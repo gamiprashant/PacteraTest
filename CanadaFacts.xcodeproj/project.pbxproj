@@ -39,6 +39,7 @@
 		CA0C12F11A71092A0010440D /* PCDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12F01A71092A0010440D /* PCDataDownloader.m */; };
 		CA0C12F41A71111E0010440D /* PCCountryFactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12F31A71111E0010440D /* PCCountryFactCell.m */; };
 		CA0C12F61A71131C0010440D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA0C12F51A71131C0010440D /* Localizable.strings */; };
+		CAD8960F1A7D9A9B0062FAF0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD8960E1A7D9A9B0062FAF0 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		CA0C12F21A71111E0010440D /* PCCountryFactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCountryFactCell.h; sourceTree = "<group>"; };
 		CA0C12F31A71111E0010440D /* PCCountryFactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCountryFactCell.m; sourceTree = "<group>"; };
 		CA0C12F51A71131C0010440D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		CAD8960E1A7D9A9B0062FAF0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD8960F1A7D9A9B0062FAF0 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +223,7 @@
 		CA0C11A21A70E7030010440D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAD8960E1A7D9A9B0062FAF0 /* QuartzCore.framework */,
 				CA0C129C1A70E7BC0010440D /* AFNetworking */,
 				CA0C12D31A70E7E50010440D /* PureLayout */,
 				CA0C12B91A70E7D40010440D /* UIKit+AFNetworking */,
