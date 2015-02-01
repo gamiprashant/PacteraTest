@@ -69,7 +69,7 @@
 
         [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
         [self.factLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical];
-        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical];
+        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical  relation:NSLayoutRelationGreaterThanOrEqual];
         [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
         self.didSetupConstraints = YES;
     }

@@ -12,14 +12,15 @@
 
 @implementation PCDataDownloader
 
+
 +(void) loadCountryDatFromServer:(void (^)(NSString* listTitle, NSArray* factArray))success
                          failure:(void (^)(NSError* error))failure {
+    
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]
                                               initWithBaseURL:[NSURL URLWithString:kCountryDataUrl]];
-    
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",
-                                                         @" application/json", nil];
+                                                             @"application/json", nil];
     
     AFHTTPRequestOperation *apiRequest = [manager GET:kCountryDataUrl parameters:nil
                                               success:^(AFHTTPRequestOperation *operation,
@@ -38,6 +39,7 @@
                                                   }
                                                   success(listTitle, facts);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
         failure(error);
     }];
     [apiRequest start];

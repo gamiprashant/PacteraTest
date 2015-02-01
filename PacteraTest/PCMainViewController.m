@@ -76,9 +76,7 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
     // every row in the table on first load; it will only be called as cells are about to scroll onscreen.
     // This is a major performance optimization.
     self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
+    
     [self loadCountryData];
 }
 
@@ -188,8 +186,6 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
         [(PCCountryFactWithImageCell*)cell setDataWithFact:fact];
     }
     
-    [fact release];
-    
     // Make sure the constraints have been added to this cell, since it may have just been created from scratch
 
     [cell setNeedsUpdateConstraints];
@@ -236,7 +232,9 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
     PCCountryFact *fact = [self.factArray objectAtIndex:indexPath.row];
 
     UITableViewCell *cell;
-    if([fact.factImageUrl isEqualToString:@""]) {
+    if([fact isEmpty]) {
+        return [[UITableViewCell alloc] init];
+    } else if([fact.factImageUrl isEqualToString:@""]) {
         cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdCountryFact];
         [(PCCountryFactCell*)cell setDataWithFact:fact];
     } else {
