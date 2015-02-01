@@ -1,12 +1,12 @@
 //
-//  PCCountryFactCell.m
-//  PacteraTest
+//  PCCountryFactWithImageCell.m
+//  CanadaFacts
 //
-//  Created by Prashant Gami on 22/01/2015.
+//  Created by Prashant Gami on 2/02/2015.
 //  Copyright (c) 2015 Pectera. All rights reserved.
 //
 
-#import "PCCountryFactCell.h"
+#import "PCCountryFactWithImageCell.h"
 #import "PureLayout.h"
 #import "PCCommonUtils.h"
 #import "UIImageView+AFNetworking.h"
@@ -14,17 +14,15 @@
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
-@interface PCCountryFactCell ()
+@interface PCCountryFactWithImageCell ()
 
 @property (nonatomic, strong) UILabel *factTitle;
 @property (nonatomic, strong) UILabel *factLabel;
+@property (nonatomic, strong) UIImageView *factImageView;
 
 @end
 
-///////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////
-@implementation PCCountryFactCell
+@implementation PCCountryFactWithImageCell
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -42,6 +40,10 @@
         self.factTitle.numberOfLines = 0;
         self.factTitle.preferredMaxLayoutWidth = self.bounds.size.width;
         [self.contentView addSubview:self.factTitle];
+        
+        self.factImageView = [UIImageView newAutoLayoutView];
+        self.factImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.contentView addSubview:self.factImageView];
         
         self.factLabel = [UILabel newAutoLayoutView];
         self.factLabel.font = [PCCommonUtils getStandardFont];
@@ -66,10 +68,15 @@
         [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:marginVertical];
         [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
         [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
+        [self.factImageView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical];
+        [self.factImageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal];
+        [self.factImageView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical relation:NSLayoutRelationGreaterThanOrEqual];
+        [self.factImageView autoSetDimensionsToSize:CGSizeMake(100., 100.)];
 
+        [self.factLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.factImageView withOffset:-marginHorizontal];
         [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
         [self.factLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical];
-        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical];
+        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical relation:NSLayoutRelationGreaterThanOrEqual];
         [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
         self.didSetupConstraints = YES;
     }
@@ -90,9 +97,10 @@
 -(void) setDataWithFact:(PCCountryFact*)fact {
     [self.factTitle setText:fact.factTitle];
     [self.factLabel setText:fact.factDescription];
+    [self.factImageView setImageWithURL:[NSURL URLWithString:fact.factImageUrl]    //This will Lazy Load the Image
+                           placeholderImage:[UIImage imageNamed:@"flag"]];
 }
 
-///////////////////////////////////////////////////////////////
 -(void)dealloc {
     [self.factTitle release];
     self.factTitle = nil;
@@ -100,8 +108,11 @@
     [self.factLabel release];
     self.factLabel = nil;
     [self.factLabel dealloc];
+    [self.factImageView release];
+    self.factImageView = nil;
+    [self.factImageView dealloc];
     [super dealloc];
-
+    
 }
 
 @end

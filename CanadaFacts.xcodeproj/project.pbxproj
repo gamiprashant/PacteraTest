@@ -40,6 +40,7 @@
 		CA0C12F41A71111E0010440D /* PCCountryFactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12F31A71111E0010440D /* PCCountryFactCell.m */; };
 		CA0C12F61A71131C0010440D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA0C12F51A71131C0010440D /* Localizable.strings */; };
 		CAD8960F1A7D9A9B0062FAF0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD8960E1A7D9A9B0062FAF0 /* QuartzCore.framework */; };
+		CAD896121A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD896111A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,8 @@
 		CA0C12F31A71111E0010440D /* PCCountryFactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCountryFactCell.m; sourceTree = "<group>"; };
 		CA0C12F51A71131C0010440D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CAD8960E1A7D9A9B0062FAF0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CAD896101A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCountryFactWithImageCell.h; sourceTree = "<group>"; };
+		CAD896111A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCountryFactWithImageCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +333,8 @@
 			children = (
 				CA0C12F21A71111E0010440D /* PCCountryFactCell.h */,
 				CA0C12F31A71111E0010440D /* PCCountryFactCell.m */,
+				CAD896101A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.h */,
+				CAD896111A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -458,6 +463,7 @@
 				CA0C12CD1A70E7D40010440D /* UIAlertView+AFNetworking.m in Sources */,
 				CA0C12F11A71092A0010440D /* PCDataDownloader.m in Sources */,
 				CA0C12B61A70E7BC0010440D /* AFURLRequestSerialization.m in Sources */,
+				CAD896121A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.m in Sources */,
 				CA0C12DF1A70E7E50010440D /* NSLayoutConstraint+PureLayout.m in Sources */,
 				CA0C12F41A71111E0010440D /* PCCountryFactCell.m in Sources */,
 				CA0C12CB1A70E7D40010440D /* AFNetworkActivityIndicatorManager.m in Sources */,

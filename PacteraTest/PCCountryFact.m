@@ -21,7 +21,6 @@
         self.factTitle = safe([factDict objectForKey:NSLocalizedString(@"factTitleKey", nil)]);
         self.factDescription = safe([factDict objectForKey:NSLocalizedString(@"factDescriptionKey", nil)]);
         self.factImageUrl = safe([factDict objectForKey:NSLocalizedString(@"factImageUrlKey", nil)]);
-        
     }
     return self;
 }
@@ -31,5 +30,18 @@
     return ( [self.factTitle isEqualToString:@""] &&
              [self.factDescription isEqualToString:@""] &&
             [self.factImageUrl isEqualToString:@""]);
+}
+
+-(void)dealloc {
+    [self.factTitle release];
+    self.factTitle = nil;
+    [self.factTitle dealloc];
+    [self.factImageUrl release];
+    self.factImageUrl = nil;
+    [self.factImageUrl dealloc];
+    [self.factDescription release];
+    self.factDescription = nil;
+    [self.factDescription dealloc];
+    [super dealloc];
 }
 @end

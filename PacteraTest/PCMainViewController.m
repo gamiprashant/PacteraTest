@@ -8,10 +8,12 @@
 
 #import "PCMainViewController.h"
 #import "PCCountryFactCell.h"
+#import "PCCountryFactWithImageCell.h"
 #import "PCDataDownloader.h"
 #import "PureLayout.h"
 
 static NSString *CellIdCountryFact = @"CellIdCountryFact";
+static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -55,6 +57,8 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
     self.tableView.allowsSelection = NO;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView registerClass:[PCCountryFactCell class] forCellReuseIdentifier:CellIdCountryFact];
+    [self.tableView registerClass:[PCCountryFactWithImageCell class] forCellReuseIdentifier:CellIdCountryFactWithImage];
+    
     self.view.backgroundColor = [UIColor whiteColor];
 
     //Allow Pull to Refresh
@@ -102,20 +106,15 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
 -(void) loadCountryData {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self showLoading];
-        [PCDataDownloader loadCountryDatFromServer:^(NSDictionary *countryData) {
+        [PCDataDownloader loadCountryDatFromServer:^(NSString *listTitle, NSArray *factArray) {
             [self hideLoading];
-            if(countryData == nil) {
-                [self.refreshControl endRefreshing];
-                return;
-            }
+            [self.refreshControl endRefreshing];
             
-            NSString *listTitle = [countryData objectForKey:@"title"];
             if(listTitle) {
                 [self.navigationItem setTitle:listTitle];
             }
-            NSArray *rows = [countryData objectForKey:@"rows"];
-            if(rows) {
-                self.factArray = rows;
+            if(factArray) {
+                self.factArray = factArray;
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
             }
@@ -132,6 +131,31 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
     
 }
 
+
+///////////////////////////////////////////////////////////////
+-(void)showLoading {
+    UIActivityIndicatorView *activityIndicator =
+    [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [activityIndicator startAnimating];
+    [activityIndicator setColor:[UIColor grayColor]];
+    UIBarButtonItem *activityItem =
+    [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+    [activityIndicator release];
+    self.navigationItem.rightBarButtonItem = activityItem;
+    [activityItem release];
+}
+
+///////////////////////////////////////////////////////////////
+-(void)hideLoading {
+    if(self.refreshBt == nil) {
+        self.refreshBt = [[UIBarButtonItem alloc]
+                          initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                          target:self
+                          action:@selector(loadCountryData)];
+    }
+    self.navigationItem.rightBarButtonItem = self.refreshBt;
+}
+
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 #pragma mark - UITableViewDataSource methods
@@ -140,15 +164,34 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
 ///////////////////////////////////////////////////////////////
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PCCountryFactCell *cell = [self.offscreenCells objectForKey:CellIdCountryFact];
-    if(cell == nil) {
-        cell = [[PCCountryFactCell alloc] init];
-        [self.offscreenCells setObject:cell forKey:CellIdCountryFact];
+    PCCountryFact *fact = [self.factArray objectAtIndex:indexPath.row];
+
+    //Handle Empty Data
+    if([fact isEmpty]) {
+        return 0.0;
     }
-    NSDictionary *factDict = [self.factArray objectAtIndex:indexPath.row];
-    [cell setFactWithDictionary:(NSDictionary*)factDict];
+    
+    UITableViewCell *cell;
+    if([fact.factImageUrl isEqualToString:@""]) {
+        cell = [self.offscreenCells objectForKey:CellIdCountryFact];
+        if(cell == nil) {
+            cell = [[PCCountryFactCell alloc] init];
+            [self.offscreenCells setObject:cell forKey:CellIdCountryFact];
+        }
+        [(PCCountryFactCell*)cell setDataWithFact:fact];
+    } else {
+        cell = [self.offscreenCells objectForKey:CellIdCountryFactWithImage];
+        if(cell == nil) {
+            cell = [[PCCountryFactWithImageCell alloc] init];
+            [self.offscreenCells setObject:cell forKey:CellIdCountryFactWithImage];
+        }
+        [(PCCountryFactWithImageCell*)cell setDataWithFact:fact];
+    }
+    
+    [fact release];
     
     // Make sure the constraints have been added to this cell, since it may have just been created from scratch
+
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];
     
@@ -175,9 +218,11 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
     // of the cell's contentView and the bottom of the table view cell.
     height += 1;
     
-    if([cell.fact isEmpty]) {
-        return 0.0;
-    }
+    NSLog(@"Cell - %ld Height - %f", indexPath.row, height);
+    NSLog(@"Title - %@", fact.factTitle);
+    NSLog(@"Description - %@", fact.factDescription);
+    NSLog(@"Image URL - %@", fact.factImageUrl);
+    NSLog(@"=======================================");
     return height;
 }
 
@@ -192,8 +237,17 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
 ///////////////////////////////////////////////////////////////
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PCCountryFactCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdCountryFact];
-    [cell setFactWithDictionary:[self.factArray objectAtIndex:indexPath.row]];
+   
+    PCCountryFact *fact = [self.factArray objectAtIndex:indexPath.row];
+
+    UITableViewCell *cell;
+    if([fact.factImageUrl isEqualToString:@""]) {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdCountryFact];
+        [(PCCountryFactCell*)cell setDataWithFact:fact];
+    } else {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdCountryFactWithImage];
+        [(PCCountryFactWithImageCell*)cell setDataWithFact:fact];
+    }
     
     //Need this to make sure that cell is sized correctly for the content
     [cell setNeedsUpdateConstraints];
@@ -203,28 +257,10 @@ static NSString *CellIdCountryFact = @"CellIdCountryFact";
 }
 
 ///////////////////////////////////////////////////////////////
--(void)showLoading {
-    UIActivityIndicatorView *activityIndicator =
-    [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [activityIndicator startAnimating];
-    [activityIndicator setColor:[UIColor grayColor]];
-    UIBarButtonItem *activityItem =
-    [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
-    [activityIndicator release];
-    self.navigationItem.rightBarButtonItem = activityItem;
-    [activityItem release];
-}
+///////////////////////////////////////////////////////////////
+#pragma mark - Cleanup
 
 ///////////////////////////////////////////////////////////////
--(void)hideLoading {
-    if(self.refreshBt == nil) {
-        self.refreshBt = [[UIBarButtonItem alloc]
-                      initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                      target:self
-                      action:@selector(loadCountryData)];
-    }
-    self.navigationItem.rightBarButtonItem = self.refreshBt;
-}
 -(void)dealloc {
     [self.refreshBt release];
     self.refreshBt = nil;

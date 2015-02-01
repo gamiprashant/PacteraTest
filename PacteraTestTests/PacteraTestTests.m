@@ -34,10 +34,12 @@
 }
 
 -(void)testDataConnectivity {
-    [PCDataDownloader loadCountryDatFromServer:^(NSDictionary *countryData) {
-        XCTAssertNotNil(countryData);
+    [PCDataDownloader loadCountryDatFromServer:^(NSString *listTitle, NSArray *factArray) {
+        XCTAssertNotNil(listTitle);
+        XCTAssertNotNil(factArray);
     } failure:^(NSError *error) {
         XCTAssertNil(error);
     }];
 }
+
 @end

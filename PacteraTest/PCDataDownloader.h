@@ -10,7 +10,7 @@
 
 @interface PCDataDownloader : NSObject
 
-+(void) loadCountryDatFromServer:(void (^)(NSDictionary* countryData))success
++(void) loadCountryDatFromServer:(void (^)(NSString* listTitle, NSArray* factArray))success
                          failure:(void (^)(NSError* error))failure;
 
 @end
