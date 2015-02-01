@@ -218,11 +218,6 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
     // of the cell's contentView and the bottom of the table view cell.
     height += 1;
     
-    NSLog(@"Cell - %ld Height - %f", indexPath.row, height);
-    NSLog(@"Title - %@", fact.factTitle);
-    NSLog(@"Description - %@", fact.factDescription);
-    NSLog(@"Image URL - %@", fact.factImageUrl);
-    NSLog(@"=======================================");
     return height;
 }
 
