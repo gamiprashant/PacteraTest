@@ -13,5 +13,5 @@
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
 
--(void) setDataWithFact:(PCCountryFact*)fact;
+-(void) setDataWithFact:(PCCountryFact*)fact forHeightOnly:(BOOL)heightOnly;
 @end

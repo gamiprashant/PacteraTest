@@ -34,10 +34,6 @@
 
 ///////////////////////////////////////////////////////////////
 -(void)dealloc {
-    NSLog(@"%@", self.factTitle);
-    NSLog(@"%@", self.factDescription);
-    NSLog(@"%@", self.factImageUrl);
-    NSLog(@"======================================");
     [self.factTitle release];
     self.factTitle = nil;
     [self.factTitle dealloc];

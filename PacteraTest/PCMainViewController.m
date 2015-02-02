@@ -185,7 +185,7 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
             cell = [[PCCountryFactWithImageCell alloc] init];
             [self.offscreenCells setObject:cell forKey:CellIdCountryFactWithImage];
         }
-        [(PCCountryFactWithImageCell*)cell setDataWithFact:fact];
+        [(PCCountryFactWithImageCell*)cell setDataWithFact:fact forHeightOnly:YES];
     }
     
     // Make sure the constraints have been added to this cell, since it may have just been created from scratch
@@ -241,7 +241,7 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
         [(PCCountryFactCell*)cell setDataWithFact:fact];
     } else {
         cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdCountryFactWithImage];
-        [(PCCountryFactWithImageCell*)cell setDataWithFact:fact];
+        [(PCCountryFactWithImageCell*)cell setDataWithFact:fact forHeightOnly:NO];
     }
     
     //Need this to make sure that cell is sized correctly for the content

@@ -99,11 +99,13 @@
 }
 
 ///////////////////////////////////////////////////////////////
--(void) setDataWithFact:(PCCountryFact*)fact {
+-(void) setDataWithFact:(PCCountryFact*)fact forHeightOnly:(BOOL)heightOnly {
     [self.factTitle setText:fact.factTitle];
     [self.factLabel setText:fact.factDescription];
-    [self.factImageView setImageWithURL:[NSURL URLWithString:fact.factImageUrl]    //This will Lazy Load the Image
+    if(!heightOnly) {
+        [self.factImageView setImageWithURL:[NSURL URLWithString:fact.factImageUrl]    //This will Lazy Load the Image
                            placeholderImage:[UIImage imageNamed:@"flag"]];
+    }
 }
 
 -(void)dealloc {
