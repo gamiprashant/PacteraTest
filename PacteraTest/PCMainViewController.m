@@ -26,7 +26,7 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 @property (nonatomic, strong) NSArray *factArray;
 @property (nonatomic, strong) UIBarButtonItem *refreshBt;
-
+@property (nonatomic, strong) NSMutableArray *constraints;
 @end
 
 ///////////////////////////////////////////////////////////////
@@ -44,6 +44,7 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
     if (self) {
         self.offscreenCells = [NSMutableDictionary dictionary];
         self.factArray = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
+        self.constraints = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -84,7 +85,7 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
 ///////////////////////////////////////////////////////////////
 - (void) updateViewConstraints {
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+    [self.constraints addObjectsFromArray:[self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero]];
     [super updateViewConstraints];
 }
 
@@ -112,6 +113,7 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
                 [self.navigationItem setTitle:listTitle];
             }
             if(factArray) {
+                NSLog(@"Retain Count - %ld", [self.factArray retainCount]);
                 self.factArray = factArray;
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
@@ -241,6 +243,7 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
         cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdCountryFactWithImage];
         [(PCCountryFactWithImageCell*)cell setDataWithFact:fact];
     }
+    
     //Need this to make sure that cell is sized correctly for the content
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];
@@ -263,6 +266,9 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
     [self.offscreenCells release];
     self.offscreenCells = nil;
     [self.offscreenCells dealloc];
+    [self.constraints release];
+    self.constraints = nil;
+    [self.constraints dealloc];
     [super dealloc];
 }
 @end

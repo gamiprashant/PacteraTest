@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) UILabel *mainLabel;
 @property (nonatomic, strong) UILabel *copyrightLabel;
+@property (nonatomic, strong) NSMutableArray *constraints;
 
 @end
 
@@ -62,11 +63,13 @@
 ///////////////////////////////////////////////////////////////
 - (void) updateViewConstraints {
     
-    [self.mainLabel autoCenterInSuperview];
+    self.constraints = [[NSMutableArray alloc] init];
     
-    [self.copyrightLabel autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    [self.copyrightLabel autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view
-                          withOffset:-20];
+    [self.constraints addObjectsFromArray:[self.mainLabel autoCenterInSuperview]];
+    
+    [self.constraints addObject:[self.copyrightLabel autoAlignAxisToSuperviewAxis:ALAxisVertical]];
+    [self.constraints addObject:[self.copyrightLabel autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.view
+                          withOffset:-20]];
     [super updateViewConstraints];
 }
 
@@ -87,6 +90,9 @@
     self.copyrightLabel = nil;
     [self.mainLabel dealloc];
     [self.copyrightLabel dealloc];
+    [self.constraints release];
+    self.constraints = nil;
+    [self.constraints dealloc];
     [super dealloc];
 }
 

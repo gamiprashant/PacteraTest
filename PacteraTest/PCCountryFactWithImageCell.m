@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UILabel *factTitle;
 @property (nonatomic, strong) UILabel *factLabel;
 @property (nonatomic, strong) UIImageView *factImageView;
+@property (nonatomic, strong) NSMutableArray *constraints;
 
 @end
 
@@ -64,20 +65,24 @@
         // As a fix, you can temporarily increase the size of the cell's contentView so that this does not occur using code similar to the line below.
         //      See here for further discussion: https://github.com/Alex311/TableCellWithAutoLayout/commit/bde387b27e33605eeac3465475d2f2ff9775f163#commitcomment-4633188
         self.contentView.bounds = CGRectMake(0.0f, 0.0f, 99999.0f, 99999.0f);
+        self.constraints = [[NSMutableArray alloc] init];
         
-        [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:marginVertical];
-        [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
-        [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
-        [self.factImageView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical];
-        [self.factImageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal];
-        [self.factImageView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical relation:NSLayoutRelationGreaterThanOrEqual];
-        [self.factImageView autoSetDimensionsToSize:CGSizeMake(100., 100.)];
-
-        [self.factLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.factImageView withOffset:-marginHorizontal];
-        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
-        [self.factLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical];
-        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical relation:NSLayoutRelationGreaterThanOrEqual];
-        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
+        [self.constraints addObject:[self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:marginVertical]];
+        [self.constraints addObject:[self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal]];
+        [self.constraints addObject:[self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual]];
+        
+        [self.constraints addObject:[self.factImageView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical]];
+        [self.constraints addObject:[self.factImageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal]];
+        [self.constraints addObject:[self.factImageView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical relation:NSLayoutRelationGreaterThanOrEqual]];
+        [self.constraints addObject:[self.factImageView autoSetDimensionsToSize:CGSizeMake(100., 100.)]];
+        
+        [self.constraints addObject:[self.factLabel autoPinEdge:ALEdgeTrailing toEdge:ALEdgeLeading ofView:self.factImageView withOffset:-marginHorizontal]];
+        
+        [self.constraints addObject:[self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal]];
+        [self.constraints addObject:[self.factLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical]];
+        [self.constraints addObject:[self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical  relation:NSLayoutRelationGreaterThanOrEqual]];
+        [self.constraints addObject:[self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual]];
+        
         self.didSetupConstraints = YES;
     }
     [super updateConstraints];
@@ -111,6 +116,9 @@
     [self.factImageView release];
     self.factImageView = nil;
     [self.factImageView dealloc];
+    [self.constraints release];
+    self.constraints = nil;
+    [self.constraints dealloc];
     [super dealloc];
     
 }

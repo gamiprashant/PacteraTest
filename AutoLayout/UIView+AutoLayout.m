@@ -224,6 +224,7 @@ static BOOL _al_isExecutingConstraintsBlock = NO;
     NSMutableArray *constraints = [NSMutableArray new];
     [constraints addObject:[self autoAlignAxisToSuperviewAxis:ALAxisHorizontal]];
     [constraints addObject:[self autoAlignAxisToSuperviewAxis:ALAxisVertical]];
+    [constraints autorelease];
     return constraints;
 }
 

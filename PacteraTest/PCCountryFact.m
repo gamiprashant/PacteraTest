@@ -18,9 +18,9 @@
 -(instancetype) initWithDictionary:(NSDictionary *)factDict {
     self = [super init];
     if(self) {
-        self.factTitle = safe([factDict objectForKey:NSLocalizedString(@"factTitleKey", nil)]);
-        self.factDescription = safe([factDict objectForKey:NSLocalizedString(@"factDescriptionKey", nil)]);
-        self.factImageUrl = safe([factDict objectForKey:NSLocalizedString(@"factImageUrlKey", nil)]);
+        self.factTitle = safe([[factDict objectForKey:NSLocalizedString(@"factTitleKey", nil)] retain]);
+        self.factDescription = safe([[factDict objectForKey:NSLocalizedString(@"factDescriptionKey", nil)] retain]);
+        self.factImageUrl = safe([[factDict objectForKey:NSLocalizedString(@"factImageUrlKey", nil)] retain]);
     }
     return self;
 }
@@ -32,7 +32,12 @@
             [self.factImageUrl isEqualToString:@""]);
 }
 
+///////////////////////////////////////////////////////////////
 -(void)dealloc {
+    NSLog(@"%@", self.factTitle);
+    NSLog(@"%@", self.factDescription);
+    NSLog(@"%@", self.factImageUrl);
+    NSLog(@"======================================");
     [self.factTitle release];
     self.factTitle = nil;
     [self.factTitle dealloc];
@@ -44,4 +49,5 @@
     [self.factDescription dealloc];
     [super dealloc];
 }
+
 @end

@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) UILabel *factTitle;
 @property (nonatomic, strong) UILabel *factLabel;
+@property (nonatomic, strong) NSMutableArray *constraints;
 
 @end
 
@@ -63,14 +64,16 @@
         //      See here for further discussion: https://github.com/Alex311/TableCellWithAutoLayout/commit/bde387b27e33605eeac3465475d2f2ff9775f163#commitcomment-4633188
         self.contentView.bounds = CGRectMake(0.0f, 0.0f, 99999.0f, 99999.0f);
         
-        [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:marginVertical];
-        [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
-        [self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
+        self.constraints = [[NSMutableArray alloc] init];
+        
+        [self.constraints addObject:[self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:marginVertical]];
+        [self.constraints addObject:[self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal]];
+        [self.constraints addObject:[self.factTitle autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual]];
 
-        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal];
-        [self.factLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical];
-        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical  relation:NSLayoutRelationGreaterThanOrEqual];
-        [self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual];
+        [self.constraints addObject:[self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:marginHorizontal]];
+        [self.constraints addObject:[self.factLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.factTitle withOffset:marginVertical]];
+        [self.constraints addObject:[self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:marginVertical  relation:NSLayoutRelationGreaterThanOrEqual]];
+        [self.constraints addObject:[self.factLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:marginHorizontal relation:NSLayoutRelationGreaterThanOrEqual]];
         self.didSetupConstraints = YES;
     }
     [super updateConstraints];
@@ -100,6 +103,9 @@
     [self.factLabel release];
     self.factLabel = nil;
     [self.factLabel dealloc];
+    [self.constraints release];
+    self.constraints = nil;
+    [self.constraints dealloc];
     [super dealloc];
 
 }

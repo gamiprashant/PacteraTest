@@ -16,4 +16,5 @@
 
 -(instancetype) initWithDictionary:(NSDictionary*)factDict;
 -(BOOL) isEmpty;
+
 @end

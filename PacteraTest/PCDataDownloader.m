@@ -36,7 +36,7 @@
                                                   for(NSDictionary *row in rows) {
                                                       PCCountryFact *fact = [[PCCountryFact alloc] initWithDictionary:row];
                                                       [facts addObject:fact];
-                                                      [fact autorelease];
+                                                      [fact release];
                                                   }
                                                   [facts autorelease];
                                                   success(listTitle, facts);
@@ -46,7 +46,7 @@
     }];
     [apiRequest start];
     
-    [manager release];
+    [manager autorelease];
 }
 
 @end

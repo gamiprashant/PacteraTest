@@ -11,7 +11,7 @@
 ////////////////////////////////////////////////////////////////
 NSString* safe (NSObject* value) {
     if ([value isKindOfClass:[NSString class]]) {
-        return value != nil && ((NSString*)value).length ? (NSString*)value : @"";
+        return (value != nil && ((NSString*)value).length) ? (NSString*)value : @"";
     } else {
         return (value == nil || value == [NSNull null]) ? @"" : (NSString*)value;
     }

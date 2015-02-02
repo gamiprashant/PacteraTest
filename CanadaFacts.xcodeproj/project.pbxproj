@@ -24,7 +24,7 @@
 		CA0C12B81A70E7BC0010440D /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12AF1A70E7BC0010440D /* AFURLSessionManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		CA0C12CB1A70E7D40010440D /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12BB1A70E7D40010440D /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		CA0C12CC1A70E7D40010440D /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12BD1A70E7D40010440D /* UIActivityIndicatorView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		CA0C12CD1A70E7D40010440D /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12BF1A70E7D40010440D /* UIAlertView+AFNetworking.m */; };
+		CA0C12CD1A70E7D40010440D /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12BF1A70E7D40010440D /* UIAlertView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		CA0C12CE1A70E7D40010440D /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12C11A70E7D40010440D /* UIButton+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		CA0C12CF1A70E7D40010440D /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12C31A70E7D40010440D /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		CA0C12D01A70E7D40010440D /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12C61A70E7D40010440D /* UIProgressView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
