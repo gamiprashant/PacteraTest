@@ -30,9 +30,6 @@
 		CA0C12D01A70E7D40010440D /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12C61A70E7D40010440D /* UIProgressView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		CA0C12D11A70E7D40010440D /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12C81A70E7D40010440D /* UIRefreshControl+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		CA0C12D21A70E7D40010440D /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12CA1A70E7D40010440D /* UIWebView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		CA0C12DD1A70E7E50010440D /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12D51A70E7E50010440D /* ALView+PureLayout.m */; };
-		CA0C12DE1A70E7E50010440D /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12D71A70E7E50010440D /* NSArray+PureLayout.m */; };
-		CA0C12DF1A70E7E50010440D /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12D91A70E7E50010440D /* NSLayoutConstraint+PureLayout.m */; };
 		CA0C12E61A70EA300010440D /* PCCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12E51A70EA300010440D /* PCCommonUtils.m */; };
 		CA0C12EB1A70EE3C0010440D /* PCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12EA1A70EE3C0010440D /* PCMainViewController.m */; };
 		CA0C12EE1A7108680010440D /* PCCountryFact.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0C12ED1A7108680010440D /* PCCountryFact.m */; };
@@ -41,6 +38,7 @@
 		CA0C12F61A71131C0010440D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA0C12F51A71131C0010440D /* Localizable.strings */; };
 		CAD8960F1A7D9A9B0062FAF0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD8960E1A7D9A9B0062FAF0 /* QuartzCore.framework */; };
 		CAD896121A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD896111A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.m */; };
+		CAD896191A7EFEFD0062FAF0 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD896181A7EFEFD0062FAF0 /* UIView+AutoLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,15 +100,6 @@
 		CA0C12C81A70E7D40010440D /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		CA0C12C91A70E7D40010440D /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		CA0C12CA1A70E7D40010440D /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		CA0C12D41A70E7E50010440D /* ALView+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALView+PureLayout.h"; sourceTree = "<group>"; };
-		CA0C12D51A70E7E50010440D /* ALView+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALView+PureLayout.m"; sourceTree = "<group>"; };
-		CA0C12D61A70E7E50010440D /* NSArray+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+PureLayout.h"; sourceTree = "<group>"; };
-		CA0C12D71A70E7E50010440D /* NSArray+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PureLayout.m"; sourceTree = "<group>"; };
-		CA0C12D81A70E7E50010440D /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
-		CA0C12D91A70E7E50010440D /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
-		CA0C12DA1A70E7E50010440D /* PureLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PureLayout+Internal.h"; sourceTree = "<group>"; };
-		CA0C12DB1A70E7E50010440D /* PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayout.h; sourceTree = "<group>"; };
-		CA0C12DC1A70E7E50010440D /* PureLayoutDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutDefines.h; sourceTree = "<group>"; };
 		CA0C12E41A70EA300010440D /* PCCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCommonUtils.h; sourceTree = "<group>"; };
 		CA0C12E51A70EA300010440D /* PCCommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCommonUtils.m; sourceTree = "<group>"; };
 		CA0C12E71A70EA8D0010440D /* PCConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCConstants.h; sourceTree = "<group>"; };
@@ -127,6 +116,8 @@
 		CAD8960E1A7D9A9B0062FAF0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CAD896101A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCountryFactWithImageCell.h; sourceTree = "<group>"; };
 		CAD896111A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCountryFactWithImageCell.m; sourceTree = "<group>"; };
+		CAD896171A7EFEFD0062FAF0 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+AutoLayout.h"; path = "AutoLayout/UIView+AutoLayout.h"; sourceTree = "<group>"; };
+		CAD896181A7EFEFD0062FAF0 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+AutoLayout.m"; path = "AutoLayout/UIView+AutoLayout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,9 +217,9 @@
 		CA0C11A21A70E7030010440D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAD896131A7EFEBA0062FAF0 /* AutoLayout */,
 				CAD8960E1A7D9A9B0062FAF0 /* QuartzCore.framework */,
 				CA0C129C1A70E7BC0010440D /* AFNetworking */,
-				CA0C12D31A70E7E50010440D /* PureLayout */,
 				CA0C12B91A70E7D40010440D /* UIKit+AFNetworking */,
 			);
 			name = Frameworks;
@@ -284,22 +275,6 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
-		CA0C12D31A70E7E50010440D /* PureLayout */ = {
-			isa = PBXGroup;
-			children = (
-				CA0C12D41A70E7E50010440D /* ALView+PureLayout.h */,
-				CA0C12D51A70E7E50010440D /* ALView+PureLayout.m */,
-				CA0C12D61A70E7E50010440D /* NSArray+PureLayout.h */,
-				CA0C12D71A70E7E50010440D /* NSArray+PureLayout.m */,
-				CA0C12D81A70E7E50010440D /* NSLayoutConstraint+PureLayout.h */,
-				CA0C12D91A70E7E50010440D /* NSLayoutConstraint+PureLayout.m */,
-				CA0C12DA1A70E7E50010440D /* PureLayout+Internal.h */,
-				CA0C12DB1A70E7E50010440D /* PureLayout.h */,
-				CA0C12DC1A70E7E50010440D /* PureLayoutDefines.h */,
-			);
-			path = PureLayout;
-			sourceTree = "<group>";
-		};
 		CA0C12E01A70E9D80010440D /* utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +312,15 @@
 				CAD896111A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.m */,
 			);
 			name = cells;
+			sourceTree = "<group>";
+		};
+		CAD896131A7EFEBA0062FAF0 /* AutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				CAD896171A7EFEFD0062FAF0 /* UIView+AutoLayout.h */,
+				CAD896181A7EFEFD0062FAF0 /* UIView+AutoLayout.m */,
+			);
+			name = AutoLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,12 +432,10 @@
 				CA0C12EB1A70EE3C0010440D /* PCMainViewController.m in Sources */,
 				CA0C12D01A70E7D40010440D /* UIProgressView+AFNetworking.m in Sources */,
 				CA0C12B31A70E7BC0010440D /* AFNetworkReachabilityManager.m in Sources */,
-				CA0C12DE1A70E7E50010440D /* NSArray+PureLayout.m in Sources */,
 				CA0C12B71A70E7BC0010440D /* AFURLResponseSerialization.m in Sources */,
 				CA0C12B51A70E7BC0010440D /* AFURLConnectionOperation.m in Sources */,
 				CA0C12CE1A70E7D40010440D /* UIButton+AFNetworking.m in Sources */,
 				CA0C12CC1A70E7D40010440D /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				CA0C12DD1A70E7E50010440D /* ALView+PureLayout.m in Sources */,
 				CA0C12B41A70E7BC0010440D /* AFSecurityPolicy.m in Sources */,
 				CA0C12D11A70E7D40010440D /* UIRefreshControl+AFNetworking.m in Sources */,
 				CA0C12EE1A7108680010440D /* PCCountryFact.m in Sources */,
@@ -464,8 +446,8 @@
 				CA0C12F11A71092A0010440D /* PCDataDownloader.m in Sources */,
 				CA0C12B61A70E7BC0010440D /* AFURLRequestSerialization.m in Sources */,
 				CAD896121A7ECB0E0062FAF0 /* PCCountryFactWithImageCell.m in Sources */,
-				CA0C12DF1A70E7E50010440D /* NSLayoutConstraint+PureLayout.m in Sources */,
 				CA0C12F41A71111E0010440D /* PCCountryFactCell.m in Sources */,
+				CAD896191A7EFEFD0062FAF0 /* UIView+AutoLayout.m in Sources */,
 				CA0C12CB1A70E7D40010440D /* AFNetworkActivityIndicatorManager.m in Sources */,
 				CA0C12B81A70E7BC0010440D /* AFURLSessionManager.m in Sources */,
 				CA0C11751A70E05A0010440D /* main.m in Sources */,

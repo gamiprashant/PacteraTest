@@ -7,7 +7,7 @@
 //
 
 #import "PCCountryFactWithImageCell.h"
-#import "PureLayout.h"
+#import "UIView+AutoLayout.h"
 #import "PCCommonUtils.h"
 #import "UIImageView+AFNetworking.h"
 

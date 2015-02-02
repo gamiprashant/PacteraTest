@@ -10,7 +10,7 @@
 #import "PCCountryFactCell.h"
 #import "PCCountryFactWithImageCell.h"
 #import "PCDataDownloader.h"
-#import "PureLayout.h"
+#import "UIView+AutoLayout.h"
 
 static NSString *CellIdCountryFact = @"CellIdCountryFact";
 static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
@@ -43,7 +43,7 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
     self = [super init];
     if (self) {
         self.offscreenCells = [NSMutableDictionary dictionary];
-        self.factArray = [[NSMutableArray alloc] initWithCapacity:0];
+        self.factArray = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
     }
     return self;
 }
@@ -233,7 +233,7 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
 
     UITableViewCell *cell;
     if([fact isEmpty]) {
-        return [[UITableViewCell alloc] init];
+        return [[[UITableViewCell alloc] init] autorelease];
     } else if([fact.factImageUrl isEqualToString:@""]) {
         cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdCountryFact];
         [(PCCountryFactCell*)cell setDataWithFact:fact];
@@ -241,7 +241,6 @@ static NSString *CellIdCountryFactWithImage = @"CellIdCountryFactWithImage";
         cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdCountryFactWithImage];
         [(PCCountryFactWithImageCell*)cell setDataWithFact:fact];
     }
-    
     //Need this to make sure that cell is sized correctly for the content
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];

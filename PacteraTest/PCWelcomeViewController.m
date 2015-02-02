@@ -7,7 +7,7 @@
 //
 
 #import "PCWelcomeViewController.h"
-#import "PureLayout.h"
+#import "UIView+AutoLayout.h"
 #import "PCCommonUtils.h"
 #import "PCConstants.h"
 #import "PCMainViewController.h"

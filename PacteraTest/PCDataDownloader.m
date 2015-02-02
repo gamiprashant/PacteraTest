@@ -36,13 +36,17 @@
                                                   for(NSDictionary *row in rows) {
                                                       PCCountryFact *fact = [[PCCountryFact alloc] initWithDictionary:row];
                                                       [facts addObject:fact];
+                                                      [fact autorelease];
                                                   }
+                                                  [facts autorelease];
                                                   success(listTitle, facts);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         failure(error);
     }];
     [apiRequest start];
+    
+    [manager release];
 }
 
 @end

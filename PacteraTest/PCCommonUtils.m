@@ -38,25 +38,21 @@ NSArray* safeArray (NSArray* value) {
 ////////////////////////////////////////////////////////////////
 + (UIFont*) getTitleFont {
     UIFont *font = [UIFont systemFontOfSize:22];
-    [font autorelease];
     return font;
 }
 ////////////////////////////////////////////////////////////////
 + (UIFont*) getHeaderFont {
     UIFont *font = [UIFont systemFontOfSize:18];
-    [font autorelease];
     return font;
 }
 ////////////////////////////////////////////////////////////////
 + (UIFont*) getStandardFont {
     UIFont *font = [UIFont systemFontOfSize:14];
-    [font autorelease];
     return font;
 }
 ////////////////////////////////////////////////////////////////
 + (UIFont*) getDescriptionFont {
     UIFont *font = [UIFont systemFontOfSize:10];
-    [font autorelease];
     return font;
 }
 
